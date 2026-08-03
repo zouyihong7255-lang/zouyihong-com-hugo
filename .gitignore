@@ -1,0 +1,19 @@
+# Hugo
+public/
+resources/
+.hugo_build.lock
+
+# 备份
+*.bak
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Env
+.env
+*.swp

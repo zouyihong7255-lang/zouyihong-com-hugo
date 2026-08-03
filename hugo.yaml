@@ -1,0 +1,104 @@
+baseURL: "https://zouyihong.com/"
+title: "邹宜洪 | Zou Yihong"
+languageCode: "zh-cn"
+defaultContentLanguage: "zh-cn"
+hasCJKLanguage: true
+theme: PaperMod
+
+pagination:
+  pagerSize: 10
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableEmoji: true
+
+minify:
+  minifyOutput: true
+
+permalinks:
+  posts: /posts/:slug/
+  about: /about/
+
+menu:
+  main:
+    - identifier: home
+      name: 首页
+      url: /
+      weight: 1
+    - identifier: posts
+      name: 文章
+      url: /posts/
+      weight: 2
+    - identifier: about
+      name: 关于
+      url: /about/
+      weight: 3
+    - identifier: forum
+      name: 论坛
+      url: https://forum.zouyihong.com
+      weight: 4
+    - identifier: alibaba
+      name: 爱理他阿里站
+      url: https://ailita4x4.com/our-alibaba-com-stores/
+      weight: 5
+
+params:
+  env: production
+  description: "邹宜洪 (Zou Yihong) 个人主页 - 跨境 B2B 外贸、汽车改装件、Flarum 部署、AI 自动化"
+  author: "邹宜洪"
+  authorDescription: "外贸业务负责人 · 跨境电商 · 越野改装"
+  images: ["/assets/profile.png"]
+  DateFormat: "2006-01-02"
+  defaultTheme: auto
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  disableSpecial1stPost: true
+  mainSections:
+    - posts
+  assets:
+    favicon: /favicon.ico
+  socialIcons:
+    - name: email
+      title: "Email"
+      url: "mailto:ryan@zouyihong.com"
+    - name: github
+      title: "GitHub"
+      url: "https://github.com/zouyihong"
+    - name: linkedin
+      title: "LinkedIn"
+      url: "https://www.linkedin.com/in/zouyihong/"
+  homeInfoParams:
+    Title: "邹宜洪 · Zou Yihong"
+    Content: |
+      **爱理他（成都）科技有限公司** 业务负责人 | 跨境 B2B 外贸 + 汽车改装件 + 越野文化
+
+      在这里我会分享日常工作中的**外贸心得、工具评测、Flarum 部署经验、跨境电商实战**。
+
+      📌 欢迎前往 [**论坛 → forum.zouyihong.com**](https://forum.zouyihong.com) 一起讨论
+  socialFollowOthers: false
+  socialFollowOwn: false
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  tableOfContents:
+    endLevel: 3
+    ordered: true
+    startLevel: 2
+  highlight:
+    noClasses: false
+    codeFences: true
+    guessSyntax: true
+    lineNos: true
+    style: monokai
