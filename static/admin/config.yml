@@ -193,6 +193,19 @@ collections:
         - label: URL
           name: url
           widget: string
+      - label: 主页信息 (homeInfoParams)
+        name: homeInfoParams
+        widget: object
+        collapsed: false
+        summary: '{{fields.title}}'
+        fields:
+        - label: 标题 (Title)
+          name: Title
+          widget: string
+        - label: 内容 (Content)
+          name: Content
+          widget: text
+          hint: 支持 Markdown。用 | 保留换行。
     - label: 菜单 (menu)
       name: menu
       widget: object
