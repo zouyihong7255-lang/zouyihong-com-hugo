@@ -107,33 +107,6 @@ collections:
   - label: 正文 (body)
     name: body
     widget: markdown
-- name: posts_index
-  label: 文章列表页 (Posts Index)
-  label_singular: 文章列表页
-  type: file_based_collection
-  files:
-  - name: posts_index
-    label: 文章列表页 (_index.md)
-    file: content/posts/_index.md
-    format: frontmatter
-    fields:
-    - label: 标题 (title)
-      name: title
-      widget: string
-    - label: 发布日期 (date)
-      name: date
-      widget: datetime
-      format: YYYY-MM-DDTHH:mm:ss+08:00
-      picker_utc: false
-      required: false
-    - label: 草稿 (draft)
-      name: draft
-      widget: boolean
-      default: false
-      required: false
-    - label: 正文 (body)
-      name: body
-      widget: markdown
 - name: config
   label: 站点配置 (Config)
   label_singular: 配置
