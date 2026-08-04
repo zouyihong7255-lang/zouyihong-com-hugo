@@ -56,7 +56,7 @@ menu:
       url: https://forum.zouyihong.com
       weight: 4
     - identifier: alibaba
-      name: 爱理他阿里站
+      name: 阿里国际站
       url: https://ailita4x4.com/our-alibaba-com-stores/
       weight: 5
     - identifier: mail
