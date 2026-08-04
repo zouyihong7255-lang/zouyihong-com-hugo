@@ -43,6 +43,10 @@ menu:
       name: 爱理他阿里站
       url: https://ailita4x4.com/our-alibaba-com-stores/
       weight: 5
+    - identifier: mail
+      name: 邮箱
+      url: https://mail.zouyihong.com/
+      weight: 6
 
 params:
   env: production
