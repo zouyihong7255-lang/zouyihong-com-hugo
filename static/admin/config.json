@@ -34,8 +34,12 @@
       "format": "yaml-frontmatter",
       "summary": "{{title}} — {{date | date('YYYY-MM-DD')}}",
       "sortable_fields": [
-        "title",
-        "date"
+        {
+          "field": "title"
+        },
+        {
+          "field": "date"
+        }
       ],
       "fields": [
         {
@@ -69,7 +73,9 @@
           "widget": "markdown"
         }
       ],
-      "type": "content"
+      "type": "folder_based_collection",
+      "view_filters": [],
+      "view_groups": []
     },
     {
       "name": "posts",
@@ -82,8 +88,12 @@
       "format": "yaml-frontmatter",
       "summary": "{{title}} — {{date | date('YYYY-MM-DD')}}",
       "sortable_fields": [
-        "title",
-        "date"
+        {
+          "field": "title"
+        },
+        {
+          "field": "date"
+        }
       ],
       "fields": [
         {
@@ -119,13 +129,23 @@
           "required": false,
           "default": [
             "日常"
-          ]
+          ],
+          "field": {
+            "name": "tag",
+            "label": "标签",
+            "widget": "string"
+          }
         },
         {
           "label": "分类",
           "name": "categories",
           "widget": "list",
-          "required": false
+          "required": false,
+          "field": {
+            "name": "category",
+            "label": "分类",
+            "widget": "string"
+          }
         },
         {
           "label": "封面图 URL",
@@ -146,7 +166,9 @@
           "widget": "markdown"
         }
       ],
-      "type": "content"
+      "type": "folder_based_collection",
+      "view_filters": [],
+      "view_groups": []
     },
     {
       "name": "config",
@@ -222,7 +244,9 @@
           ]
         }
       ],
-      "type": "files"
+      "type": "file_based_collection",
+      "view_filters": [],
+      "view_groups": []
     }
   ]
 }
