@@ -182,71 +182,144 @@
           "format": "yaml",
           "fields": [
             {
-              "label": "站点标题",
-              "name": "title",
-              "widget": "string"
+              "label": "基础设置",
+              "name": "basics",
+              "widget": "object",
+              "fields": [
+                {
+                  "label": "站点标题",
+                  "name": "title",
+                  "widget": "string"
+                },
+                {
+                  "label": "站点副标题",
+                  "name": "description",
+                  "widget": "text"
+                }
+              ]
             },
             {
-              "label": "站点副标题",
-              "name": "description",
-              "widget": "text"
+              "label": "作者信息",
+              "name": "author",
+              "widget": "object",
+              "fields": [
+                {
+                  "label": "作者",
+                  "name": "params.profileMode.author",
+                  "widget": "string"
+                },
+                {
+                  "label": "作者副标题",
+                  "name": "params.profileMode.subtitle",
+                  "widget": "text"
+                }
+              ]
             },
             {
-              "label": "作者",
-              "name": "params.profileMode.author",
-              "widget": "string"
+              "label": "社交链接",
+              "name": "social",
+              "widget": "object",
+              "fields": [
+                {
+                  "label": "GitHub",
+                  "name": "params.socialIcons.github",
+                  "widget": "string",
+                  "required": false
+                },
+                {
+                  "label": "邮箱",
+                  "name": "params.socialIcons.email",
+                  "widget": "string",
+                  "required": false
+                }
+              ]
             },
             {
-              "label": "作者副标题",
-              "name": "params.profileMode.subtitle",
-              "widget": "text"
-            },
-            {
-              "label": "GitHub",
-              "name": "params.socialIcons.github",
-              "widget": "string",
-              "required": false
-            },
-            {
-              "label": "邮箱",
-              "name": "params.socialIcons.email",
-              "widget": "string",
-              "required": false
-            },
-            {
-              "label": "主菜单",
-              "name": "menu.main",
-              "widget": "list",
-              "field": {
-                "label": "菜单项",
-                "name": "item",
-                "widget": "object",
-                "fields": [
-                  {
-                    "label": "名称",
-                    "name": "name",
-                    "widget": "string"
+              "label": "顶部菜单",
+              "name": "menu",
+              "widget": "object",
+              "fields": [
+                {
+                  "label": "主菜单",
+                  "name": "main",
+                  "widget": "list",
+                  "field": {
+                    "label": "菜单项",
+                    "name": "item",
+                    "widget": "object",
+                    "fields": [
+                      {
+                        "label": "标识符",
+                        "name": "identifier",
+                        "widget": "string",
+                        "required": true
+                      },
+                      {
+                        "label": "名称",
+                        "name": "name",
+                        "widget": "string"
+                      },
+                      {
+                        "label": "URL",
+                        "name": "url",
+                        "widget": "string"
+                      },
+                      {
+                        "label": "权重",
+                        "name": "weight",
+                        "widget": "number",
+                        "default": 1
+                      }
+                    ]
                   },
-                  {
-                    "label": "URL",
-                    "name": "url",
-                    "widget": "string"
-                  },
-                  {
-                    "label": "权重",
-                    "name": "weight",
-                    "widget": "number",
-                    "default": 1
-                  }
-                ]
-              }
+                  "default": [
+                    {
+                      "identifier": "home",
+                      "name": "首页",
+                      "url": "/",
+                      "weight": 1
+                    },
+                    {
+                      "identifier": "posts",
+                      "name": "文章",
+                      "url": "/posts/",
+                      "weight": 2
+                    },
+                    {
+                      "identifier": "about",
+                      "name": "关于",
+                      "url": "/about/",
+                      "weight": 3
+                    },
+                    {
+                      "identifier": "forum",
+                      "name": "论坛",
+                      "url": "https://forum.zouyihong.com",
+                      "weight": 4
+                    },
+                    {
+                      "identifier": "alibaba",
+                      "name": "爱理他阿里站",
+                      "url": "https://ailita4x4.com/our-alibaba-com-stores/",
+                      "weight": 5
+                    },
+                    {
+                      "identifier": "mail",
+                      "name": "邮箱",
+                      "url": "https://mail.zouyihong.com/",
+                      "weight": 6
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
       ],
       "type": "file_based_collection",
       "view_filters": [],
-      "view_groups": []
+      "view_groups": [],
+      "sortable_fields": []
     }
   ]
 }
