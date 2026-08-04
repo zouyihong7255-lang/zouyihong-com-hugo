@@ -123,7 +123,7 @@ collections:
     - label: 发布日期 (date)
       name: date
       widget: datetime
-      format: YYYY-MM-DD HH:mm
+      format: YYYY-MM-DDTHH:mm:ss+08:00
       picker_utc: false
       required: false
     - label: 草稿 (draft)
