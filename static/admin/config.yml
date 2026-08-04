@@ -12,31 +12,58 @@ site_url: https://zouyihong.com
 display_url: https://zouyihong.com
 logo_url: /favicon.svg
 collections:
+- name: home
+  label: 首页 (Home)
+  label_singular: 首页
+  type: file_based_collection
+  files:
+  - name: _index
+    label: 主页 (_index.md)
+    file: content/_index.md
+    format: frontmatter
+    fields:
+    - label: 标题 (title)
+      name: title
+      widget: string
+    - label: 发布日期 (date)
+      name: date
+      widget: datetime
+      format: YYYY-MM-DD HH:mm
+      picker_utc: false
+      required: false
+    - label: 草稿 (draft)
+      name: draft
+      widget: boolean
+      default: false
+      required: false
+    - label: 正文 (body)
+      name: body
+      widget: markdown
 - name: pages
   label: 页面 (Pages)
   label_singular: 页面
   type: folder_based_collection
-  folder: content
-  create: true
-  delete: true
+  folder: content/pages
   extension: md
   format: frontmatter
+  create: true
+  delete: true
   fields:
-  - label: 标题
+  - label: 标题 (title)
     name: title
     widget: string
-  - label: 发布日期
+  - label: 发布日期 (date)
     name: date
     widget: datetime
     format: YYYY-MM-DD HH:mm
     picker_utc: false
-    default: ''
-  - label: 草稿
+    required: false
+  - label: 草稿 (draft)
     name: draft
     widget: boolean
     default: false
     required: false
-  - label: 正文
+  - label: 正文 (body)
     name: body
     widget: markdown
 - name: posts
@@ -44,36 +71,40 @@ collections:
   label_singular: 文章
   type: folder_based_collection
   folder: content/posts
-  create: true
-  delete: true
   extension: md
   format: frontmatter
+  create: true
+  delete: true
   fields:
-  - label: 标题
+  - label: 标题 (title)
     name: title
     widget: string
-  - label: 发布日期
+  - label: 发布日期 (date)
     name: date
     widget: datetime
     format: YYYY-MM-DD HH:mm
     picker_utc: false
-    default: ''
-  - label: 草稿
+    required: false
+  - label: 草稿 (draft)
     name: draft
     widget: boolean
     default: false
     required: false
-  - label: 标签
+  - label: 标签 (tags)
     name: tags
     widget: list
     required: false
     default: []
-  - label: 分类
+  - label: 分类 (categories)
     name: categories
     widget: list
     required: false
     default: []
-  - label: 正文
+  - label: 摘要 (excerpt)
+    name: excerpt
+    widget: text
+    required: false
+  - label: 正文 (body)
     name: body
     widget: markdown
 - name: config
@@ -89,21 +120,23 @@ collections:
     - label: 站点标题 (title)
       name: title
       widget: string
-    - label: Params 参数 (params)
+    - label: Params 参数
       name: params
       widget: object
       collapsed: false
-      summary: '{{fields.author}} - {{fields.description | truncate(50)}}'
+      summary: '{{fields.author}}'
       fields:
-      - label: 站点副标题 (description)
-        name: description
-        widget: text
       - label: 作者 (author)
         name: author
         widget: string
       - label: 作者副标题 (authorDescription)
         name: authorDescription
         widget: text
+        required: false
+      - label: 站点副标题 (description)
+        name: description
+        widget: text
+        required: false
       - label: 社交图标 (socialIcons)
         name: socialIcons
         widget: list
@@ -118,13 +151,13 @@ collections:
         - label: URL
           name: url
           widget: string
-    - label: 主菜单 (menu)
+    - label: 菜单 (menu)
       name: menu
       widget: object
       collapsed: false
-      summary: '{{fields.main.length || 0}} 菜单项'
+      summary: '{{fields.main.length || 0}} 项'
       fields:
-      - label: 菜单项 (main)
+      - label: 主菜单 (main)
         name: main
         widget: list
         summary: '{{fields.name}} → {{fields.url}}'
