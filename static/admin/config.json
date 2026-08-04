@@ -7,36 +7,43 @@
     "base_url": "https://oauth.zouyihong.com",
     "auth_endpoint": "auth",
     "open_authoring": false,
-    "commit_messages": {
-      "create": "Create {{collection}} \"{{slug}}\"",
-      "update": "Update {{collection}} \"{{slug}}\"",
-      "delete": "Delete {{collection}} \"{{slug}}\"",
-      "uploadMedia": "Upload \"{{path}}\"",
-      "deleteMedia": "Delete \"{{path}}\""
-    }
+    "squash_merges": true
   },
+  "media_folder": "static/uploads",
+  "public_folder": "/uploads",
+  "site_url": "https://zouyihong.com",
+  "display_url": "https://zouyihong.com",
+  "logo_url": "/favicon.svg",
   "locale": "zh_Hans",
   "collections": [
     {
       "name": "pages",
       "label": "页面 (Pages)",
       "label_singular": "页面",
-      "folder": "content",
+      "type": "folder_based_collection",
+      "folder": "content/pages",
       "create": true,
-      "slug": "{{slug}}",
+      "delete": true,
       "extension": "md",
-      "format": "yaml-frontmatter",
-      "summary": "{{title}} — {{date | date('YYYY-MM-DD')}}",
+      "format": "frontmatter",
       "sortable_fields": [
+        "date",
+        "title"
+      ],
+      "view_filters": [
         {
-          "field": "title"
-        },
-        {
-          "field": "date"
+          "label": "草稿",
+          "field": "draft",
+          "pattern": true
         }
       ],
-      "view_filters": [],
-      "view_groups": [],
+      "view_groups": [
+        {
+          "label": "年份",
+          "field": "date",
+          "pattern": "\\d{4}"
+        }
+      ],
       "fields": [
         {
           "label": "标题",
@@ -47,50 +54,58 @@
           "label": "发布日期",
           "name": "date",
           "widget": "datetime",
-          "format": "YYYY-MM-DD",
+          "format": "YYYY-MM-DD HH:mm",
           "picker_utc": false,
-          "required": false
+          "default": ""
         },
         {
           "label": "草稿",
           "name": "draft",
           "widget": "boolean",
+          "default": false,
           "required": false
         },
         {
           "label": "摘要",
-          "name": "description",
+          "name": "summary",
           "widget": "text",
           "required": false
         },
         {
-          "label": "正文 (Markdown)",
+          "label": "正文",
           "name": "body",
           "widget": "markdown"
         }
-      ],
-      "type": "folder_based_collection"
+      ]
     },
     {
       "name": "posts",
       "label": "文章 (Posts)",
       "label_singular": "文章",
+      "type": "folder_based_collection",
       "folder": "content/posts",
       "create": true,
-      "slug": "{{year}}-{{month}}-{{day}}-{{slug}}",
+      "delete": true,
       "extension": "md",
-      "format": "yaml-frontmatter",
-      "summary": "{{title}} — {{date | date('YYYY-MM-DD')}}",
+      "format": "frontmatter",
       "sortable_fields": [
+        "date",
+        "title"
+      ],
+      "view_filters": [
         {
-          "field": "title"
-        },
-        {
-          "field": "date"
+          "label": "草稿",
+          "field": "draft",
+          "pattern": true
         }
       ],
-      "view_filters": [],
-      "view_groups": [],
+      "view_groups": [
+        {
+          "label": "年份",
+          "field": "date",
+          "pattern": "\\d{4}"
+        }
+      ],
       "fields": [
         {
           "label": "标题",
@@ -101,59 +116,53 @@
           "label": "发布日期",
           "name": "date",
           "widget": "datetime",
-          "format": "YYYY-MM-DDTHH:mm:ssZ",
-          "picker_utc": false
+          "format": "YYYY-MM-DD HH:mm",
+          "picker_utc": false,
+          "default": ""
         },
         {
           "label": "草稿",
           "name": "draft",
           "widget": "boolean",
+          "default": false,
           "required": false
         },
         {
-          "label": "作者",
-          "name": "author",
-          "widget": "string",
+          "label": "摘要",
+          "name": "summary",
+          "widget": "text",
           "required": false
         },
         {
           "label": "标签",
           "name": "tags",
           "widget": "list",
-          "required": false
+          "required": false,
+          "default": []
         },
         {
           "label": "分类",
           "name": "categories",
           "widget": "list",
-          "required": false
+          "required": false,
+          "default": []
         },
         {
-          "label": "摘要",
-          "name": "description",
-          "widget": "text",
-          "required": false
-        },
-        {
-          "label": "正文 (Markdown)",
+          "label": "正文",
           "name": "body",
           "widget": "markdown"
         }
-      ],
-      "type": "folder_based_collection"
+      ]
     },
     {
       "name": "config",
       "label": "站点配置 (Config)",
       "label_singular": "配置",
       "type": "file_based_collection",
-      "view_filters": [],
-      "view_groups": [],
-      "sortable_fields": [],
       "files": [
         {
           "name": "hugo",
-          "label": "Hugo 主配置 (仅 title)",
+          "label": "Hugo 主配置 (hugo.yaml)",
           "file": "hugo.yaml",
           "format": "yaml",
           "fields": [
@@ -163,98 +172,77 @@
               "widget": "string"
             },
             {
-              "label": "站点副标题 (siteDescription)",
-              "name": "siteDescription",
+              "label": "站点副标题 (description)",
+              "name": "params.description",
               "widget": "text"
             },
             {
-              "label": "作者 (siteAuthor)",
-              "name": "siteAuthor",
+              "label": "作者 (author)",
+              "name": "params.author",
               "widget": "string"
             },
             {
-              "label": "作者副标题 (siteAuthorDescription)",
-              "name": "siteAuthorDescription",
+              "label": "作者副标题 (authorDescription)",
+              "name": "params.authorDescription",
               "widget": "text"
             },
             {
-              "label": "社交图标 (siteSocialIcons)",
-              "name": "siteSocialIcons",
+              "label": "社交图标 (socialIcons)",
+              "name": "params.socialIcons",
               "widget": "list",
-              "field": {
-                "label": "图标",
-                "name": "icon",
-                "widget": "object",
-                "fields": [
-                  {
-                    "label": "图标名 (name)",
-                    "name": "name",
-                    "widget": "select",
-                    "options": [
-                      "email",
-                      "github",
-                      "linkedin",
-                      "twitter",
-                      "rss"
-                    ]
-                  },
-                  {
-                    "label": "标题 (title)",
-                    "name": "title",
-                    "widget": "string"
-                  },
-                  {
-                    "label": "URL",
-                    "name": "url",
-                    "widget": "string"
-                  }
-                ]
-              }
-            },
-            {
-              "label": "顶部菜单 (siteMenu)",
-              "name": "siteMenu",
-              "widget": "list",
-              "field": {
-                "label": "菜单项",
-                "name": "item",
-                "widget": "object",
-                "fields": [
-                  {
-                    "label": "标识符 (identifier)",
-                    "name": "identifier",
-                    "widget": "string"
-                  },
-                  {
-                    "label": "名称 (name)",
-                    "name": "name",
-                    "widget": "string"
-                  },
-                  {
-                    "label": "URL",
-                    "name": "url",
-                    "widget": "string"
-                  },
-                  {
-                    "label": "权重 (weight)",
-                    "name": "weight",
-                    "widget": "number",
-                    "default": 1
-                  }
-                ]
-              }
-            },
-            {
-              "label": "📋 高级：手动维护 params/menu 镜像段",
-              "name": "_advanced_notice",
-              "widget": "object",
-              "collapsed": true,
+              "summary": "{{fields.title}} ({{fields.name}})",
               "fields": [
                 {
-                  "label": "说明",
-                  "name": "notice",
-                  "widget": "markdown",
-                  "default": "**重要**:\n\n`siteAuthor` / `siteDescription` / `siteSocialIcons` / `siteMenu` 是**顶层字段**（**Decap 友好**）\n\n但 PaperMod theme 实际读 `params.author` / `params.description` / `params.socialIcons` / `menu.main`\n\n这两个段当前是**手动镜像**的（**通过 SSH + Jade 改**）\n\n如果 Decap 改了顶层**忘了镜像 params 段** —— **网站会变**！\n\n需要 Jade 写个 mirror 脚本（**deploy.sh 加一行**）"
+                  "label": "图标名 (name)",
+                  "name": "name",
+                  "widget": "select",
+                  "options": [
+                    "email",
+                    "github",
+                    "linkedin",
+                    "twitter",
+                    "rss"
+                  ]
+                },
+                {
+                  "label": "标题 (title)",
+                  "name": "title",
+                  "widget": "string"
+                },
+                {
+                  "label": "URL",
+                  "name": "url",
+                  "widget": "string"
+                }
+              ]
+            },
+            {
+              "label": "主菜单 (menu.main)",
+              "name": "menu.main",
+              "widget": "list",
+              "summary": "{{fields.name}} → {{fields.url}}",
+              "fields": [
+                {
+                  "label": "标识符 (identifier)",
+                  "name": "identifier",
+                  "widget": "string"
+                },
+                {
+                  "label": "名称 (name)",
+                  "name": "name",
+                  "widget": "string"
+                },
+                {
+                  "label": "URL",
+                  "name": "url",
+                  "widget": "string"
+                },
+                {
+                  "label": "权重 (weight)",
+                  "name": "weight",
+                  "widget": "number",
+                  "value_type": "int",
+                  "default": 1
                 }
               ]
             }
@@ -262,7 +250,5 @@
         }
       ]
     }
-  ],
-  "media_folder": "static/uploads",
-  "public_folder": "/uploads"
+  ]
 }
