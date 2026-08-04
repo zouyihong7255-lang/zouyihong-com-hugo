@@ -121,51 +121,55 @@ collections:
     - label: 站点标题 (title)
       name: title
       widget: string
-    - label: 站点副标题 (description)
-      name: params.description
-      widget: text
-    - label: 作者 (author)
-      name: params.author
-      widget: string
-    - label: 作者副标题 (authorDescription)
-      name: params.authorDescription
-      widget: text
-    - label: 社交图标 (socialIcons)
-      name: params.socialIcons
-      widget: list
-      summary: '{{fields.title}} ({{fields.name}})'
+    - label: Params 参数 (params)
+      name: params
+      widget: object
+      summary: '{{fields.author}} - {{fields.description}}'
       fields:
-      - label: 图标名 (name)
-        name: name
-        widget: select
-        options:
-        - email
-        - github
-        - linkedin
-        - twitter
-        - rss
-      - label: 标题 (title)
-        name: title
+      - label: 站点副标题 (description)
+        name: description
+        widget: text
+      - label: 作者 (author)
+        name: author
         widget: string
-      - label: URL
-        name: url
-        widget: string
-    - label: 主菜单 (menu.main)
-      name: menu.main
-      widget: list
-      summary: '{{fields.name}} → {{fields.url}}'
+      - label: 作者副标题 (authorDescription)
+        name: authorDescription
+        widget: text
+      - label: 社交图标 (socialIcons)
+        name: socialIcons
+        widget: list
+        summary: '{{fields.title}} ({{fields.name}})'
+        fields:
+        - label: 图标名 (name)
+          name: name
+          widget: string
+        - label: 标题 (title)
+          name: title
+          widget: string
+        - label: URL
+          name: url
+          widget: string
+    - label: 主菜单 (menu)
+      name: menu
+      widget: object
+      summary: '{{fields.main.length || 0}} 菜单项'
       fields:
-      - label: 标识符 (identifier)
-        name: identifier
-        widget: string
-      - label: 名称 (name)
-        name: name
-        widget: string
-      - label: URL
-        name: url
-        widget: string
-      - label: 权重 (weight)
-        name: weight
-        widget: number
-        value_type: int
-        default: 1
+      - label: 菜单项 (main)
+        name: main
+        widget: list
+        summary: '{{fields.name}} → {{fields.url}}'
+        fields:
+        - label: 标识符 (identifier)
+          name: identifier
+          widget: string
+        - label: 名称 (name)
+          name: name
+          widget: string
+        - label: URL
+          name: url
+          widget: string
+        - label: 权重 (weight)
+          name: weight
+          widget: number
+          value_type: int
+          default: 1
