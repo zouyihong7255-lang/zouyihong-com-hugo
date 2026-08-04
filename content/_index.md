@@ -20,7 +20,3 @@ type: page
 * [论坛 → forum.zouyihong.com](https://forum.zouyihong.com) 讨论区
 * 阿里国际站 → [Ailita 店铺](https://ailita4x4.com/our-alibaba-com-stores/)
 * 邮箱 → ryan@zouyihong.com
-
-## 近期内容
-
-下方为最新文章列表。
