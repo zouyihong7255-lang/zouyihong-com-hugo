@@ -25,6 +25,11 @@ collections:
     - label: 标题 (title)
       name: title
       widget: string
+    - label: URL 别名 (slug)
+      name: slug
+      widget: string
+      required: false
+      hint: 'URL 路径段（例: my-post）。留空用文件名。建议英文、数字、连字符。'
     - label: 发布日期 (date)
       name: date
       widget: datetime
@@ -52,6 +57,11 @@ collections:
   - label: 标题 (title)
     name: title
     widget: string
+  - label: URL 别名 (slug)
+    name: slug
+    widget: string
+    required: false
+    hint: 'URL 路径段（例: my-post）。留空用文件名。建议英文、数字、连字符。'
   - label: 发布日期 (date)
     name: date
     widget: datetime
@@ -79,6 +89,11 @@ collections:
   - label: 标题 (title)
     name: title
     widget: string
+  - label: URL 别名 (slug)
+    name: slug
+    widget: string
+    required: false
+    hint: 'URL 路径段（例: my-post）。留空用文件名。建议英文、数字、连字符。'
   - label: 发布日期 (date)
     name: date
     widget: datetime
@@ -115,6 +130,11 @@ collections:
     - label: 标题 (title)
       name: title
       widget: string
+    - label: URL 别名 (slug)
+      name: slug
+      widget: string
+      required: false
+      hint: 'URL 路径段（例: my-post）。留空用文件名。建议英文、数字、连字符。'
     - label: 发布日期 (date)
       name: date
       widget: datetime
