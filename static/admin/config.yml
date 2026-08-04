@@ -107,17 +107,10 @@ collections:
   - label: 正文 (body)
     name: body
     widget: markdown
-- name: posts_index
-  label: 文章列表页 (Posts Index)
-  label_singular: 文章列表页
-  type: file_based_collection
-  files:
-  - name: posts_index
-    label: 文章列表页 (_index.md)
-    file: content/posts/_index.md
-    format: frontmatter
-    identifier_field: title
-    slug: posts_index
+  index_file:
+    name: _index
+    label: 文章列表页
+    icon: list
     fields:
     - label: 标题 (title)
       name: title
