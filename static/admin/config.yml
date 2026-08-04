@@ -76,6 +76,38 @@ collections:
   - label: 正文 (body)
     name: body
     widget: markdown
+- name: about
+  label: 关于 (About)
+  label_singular: 关于
+  type: file_based_collection
+  files:
+  - name: about
+    label: 关于页 (about.md)
+    file: content/about.md
+    format: frontmatter
+    fields:
+    - label: 标题 (title)
+      name: title
+      widget: string
+    - label: URL 别名 (slug)
+      name: slug
+      widget: string
+      required: false
+      hint: URL 路径段。留空用文件名。建议英文、数字、连字符。
+    - label: 发布日期 (date)
+      name: date
+      widget: datetime
+      format: YYYY-MM-DDTHH:mm:ss+08:00
+      picker_utc: false
+      required: false
+    - label: 草稿 (draft)
+      name: draft
+      widget: boolean
+      default: false
+      required: false
+    - label: 正文 (body)
+      name: body
+      widget: markdown
 - name: posts
   label: 文章 (Posts)
   label_singular: 文章
