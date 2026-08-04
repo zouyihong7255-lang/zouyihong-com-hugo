@@ -14,12 +14,9 @@ params:
       title: facebook
       url: https://www.facebook.com/profile.php?id=61567156603897
   homeInfoParams:
-    Title: 邹宜洪 · Zou Yihong
+    Title: 近期内容
     Content: |-
-      **爱理他（成都）科技有限公司** 业务负责人 | 跨境 B2B 外贸 + 汽车改装件 + 越野文化
-
-      在这里我会分享日常工作中的**外贸心得、工具评测、Flarum 部署经验、跨境电商实战**。
-
+      下方为最新文章列表。
       欢迎前往 [**论坛 → forum.zouyihong.com**](https://forum.zouyihong.com) 一起讨论
   env: production
   images:
@@ -63,17 +60,17 @@ menu:
       name: 邮箱
       url: https://mail.zouyihong.com/
       weight: 6
-defaultContentLanguage: zh-cn
-enableRobotsTXT: true
-buildDrafts: false
-buildFuture: false
-buildExpired: false
-enableEmoji: true
 outputs:
   home:
     - HTML
     - RSS
     - JSON
+enableEmoji: true
+buildExpired: false
+buildFuture: false
+buildDrafts: false
+enableRobotsTXT: true
+defaultContentLanguage: zh-cn
 baseURL: https://zouyihong.com/
 languageCode: zh-cn
 hasCJKLanguage: true
