@@ -13,19 +13,16 @@ excerpt: ''
 summary: 这是我的新个人主页，用 Hugo + PaperMod 搭建，托管在 serv00 静态空间。
 ---
 
-## 起源
-
-之前在 Squarespace 上托管个人主页，但功能受限 + 性能不够极致。
-现在改用 [Hugo](https://gohugo.io/) + [PaperMod](https://github.com/adityatelange/hugo-PaperMod) 静态站点生成器，
+>使用 [Hugo](https://gohugo.io/) + [PaperMod](https://github.com/adityatelange/hugo-PaperMod) 静态站点生成器，
 部署在 serv00 FreeBSD 集群的 Go 二进制环境。
 
 ## 技术栈
 
 | 项目 | 选型 |
 | --- | --- |
-| 静态生成器 | Hugo  |
-| 主题 | PaperMod  |
-| 主机 | serv00  |
+| 静态生成器 | Hugo |
+| 主题 | PaperMod |
+| 主机 | serv00 |
 | CDN | Cloudflare |
 
 ## 关于我
