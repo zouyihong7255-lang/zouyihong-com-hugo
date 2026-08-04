@@ -1,0 +1,145 @@
+backend:
+  name: github
+  repo: zouyihong7255-lang/zouyihong-com-hugo
+  branch: main
+  commit_branch: main
+  base_url: https://oauth.zouyihong.com
+  auth_endpoint: auth
+  squash_merges: true
+media_folder: static/uploads
+public_folder: /uploads
+site_url: https://zouyihong.com
+display_url: https://zouyihong.com
+logo_url: /favicon.svg
+collections:
+- name: pages
+  label: 页面 (Pages)
+  label_singular: 页面
+  type: folder_based_collection
+  folder: content
+  create: true
+  delete: true
+  extension: md
+  format: frontmatter
+  fields:
+  - label: 标题
+    name: title
+    widget: string
+  - label: 发布日期
+    name: date
+    widget: datetime
+    format: YYYY-MM-DD HH:mm
+    picker_utc: false
+    default: ''
+  - label: 草稿
+    name: draft
+    widget: boolean
+    default: false
+    required: false
+  - label: 正文
+    name: body
+    widget: markdown
+- name: posts
+  label: 文章 (Posts)
+  label_singular: 文章
+  type: folder_based_collection
+  folder: content/posts
+  create: true
+  delete: true
+  extension: md
+  format: frontmatter
+  fields:
+  - label: 标题
+    name: title
+    widget: string
+  - label: 发布日期
+    name: date
+    widget: datetime
+    format: YYYY-MM-DD HH:mm
+    picker_utc: false
+    default: ''
+  - label: 草稿
+    name: draft
+    widget: boolean
+    default: false
+    required: false
+  - label: 标签
+    name: tags
+    widget: list
+    required: false
+    default: []
+  - label: 分类
+    name: categories
+    widget: list
+    required: false
+    default: []
+  - label: 正文
+    name: body
+    widget: markdown
+- name: config
+  label: 站点配置 (Config)
+  label_singular: 配置
+  type: file_based_collection
+  files:
+  - name: hugo
+    label: Hugo 主配置 (hugo.yaml)
+    file: hugo.yaml
+    format: yaml
+    fields:
+    - label: 站点标题 (title)
+      name: title
+      widget: string
+    - label: Params 参数 (params)
+      name: params
+      widget: object
+      collapsed: false
+      summary: '{{fields.author}} - {{fields.description | truncate(50)}}'
+      fields:
+      - label: 站点副标题 (description)
+        name: description
+        widget: text
+      - label: 作者 (author)
+        name: author
+        widget: string
+      - label: 作者副标题 (authorDescription)
+        name: authorDescription
+        widget: text
+      - label: 社交图标 (socialIcons)
+        name: socialIcons
+        widget: list
+        summary: '{{fields.title}} ({{fields.name}})'
+        fields:
+        - label: 图标名 (name)
+          name: name
+          widget: string
+        - label: 标题 (title)
+          name: title
+          widget: string
+        - label: URL
+          name: url
+          widget: string
+    - label: 主菜单 (menu)
+      name: menu
+      widget: object
+      collapsed: false
+      summary: '{{fields.main.length || 0}} 菜单项'
+      fields:
+      - label: 菜单项 (main)
+        name: main
+        widget: list
+        summary: '{{fields.name}} → {{fields.url}}'
+        fields:
+        - label: 标识符 (identifier)
+          name: identifier
+          widget: string
+        - label: 名称 (name)
+          name: name
+          widget: string
+        - label: URL
+          name: url
+          widget: string
+        - label: 权重 (weight)
+          name: weight
+          widget: number
+          value_type: int
+          default: 1
