@@ -183,7 +183,7 @@ header.header .header-nav,
     padding: 0 1rem !important;
 }
 
-/* === Hero / homeInfoParams - 居中无框，紧凑 === */
+/* === Hero / homeInfoParams - 居中无框，紧凑 - v12 居中显示 === */
 .first-entry, .home-info {
     background: transparent !important;
     border: 0 !important;
@@ -195,6 +195,15 @@ header.header .header-nav,
     max-width: 720px;
     position: relative;
     z-index: 1;
+}
+
+/* v12: 主页 main 内部 flexbox 居中 - 解决下方空 */
+body.list > .main {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center !important;
+    align-items: center !important;
+    flex: 1 0 auto;
 }
 
 .home-info h1, .first-entry h2 {
