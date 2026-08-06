@@ -222,12 +222,23 @@ main .post-content:has(.avatar-container) {
     margin-bottom: 0.25rem !important;
 }
 
-/* v24: 微调 22vh -> 18vh 让内容真正居中 */
+/* v25: 水平居中修复 - 强制 main 居中 + 限制 first-entry 宽度 */
 body.list > .main {
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
     min-height: 100vh !important;
-    padding: 18vh var(--gap) 0 !important;
+    padding: 18vh 0 0 !important;
+    margin: 0 auto !important;
+    max-width: 720px !important;
+    width: 100% !important;
+}
+
+.first-entry, .home-info {
+    width: 100% !important;
+    max-width: 100% !important;
     margin: 0 !important;
+    text-align: center !important;
 }
 
 /* === v13: 圆形头像 - 居中 H1 上方 === */
