@@ -1,6 +1,6 @@
 /* ============================================
-   zouyihong.com - ahmadx.dev 风格定制 v9
-   微调菜单间距到 25px
+   zouyihong.com - ahmadx.dev 风格定制 v10
+   修复首页下方空白（min-height 强制占满）
    ============================================ */
 
 :root {
@@ -53,6 +53,7 @@ body {
     color: var(--primary) !important;
     position: relative;
     min-height: 100vh;
+    margin: 0 !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -62,7 +63,16 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
 }
 
-/* === 导航栏 v9 - 菜单间距调到 25px === */
+/* === v10 关键修复：去掉 .main 的 min-height === */
+.main {
+    min-height: 0 !important;
+    position: relative;
+    padding: 0 var(--gap);
+    max-width: calc(var(--main-width) + var(--gap) * 2);
+    margin: 0 auto;
+}
+
+/* === 导航栏 === */
 header.header nav.header-nav ul.menu,
 header.header .header-nav ul.menu,
 .nav ul.menu,
@@ -83,10 +93,6 @@ ul.menu li {
     list-style: none;
 }
 
-/* === v9 关键：菜单项自身内边距调到 0.45rem 0.5rem = 7.2px / 8px === */
-/* 总间距 = 8 + 8 = 16px (a padding 两侧) */
-/* 加上菜单项之间 1px 间隙 = ~17px */
-/* 这样比 ahmadx.dev 还紧凑 */
 header.header nav.header-nav ul.menu li a,
 .nav ul.menu li a,
 ul.menu li a {
@@ -167,12 +173,12 @@ header.header .header-nav,
     padding: 0 1rem !important;
 }
 
-/* === Hero / homeInfoParams - 居中无框 === */
+/* === Hero / homeInfoParams - 居中无框，紧凑 === */
 .first-entry, .home-info {
     background: transparent !important;
     border: 0 !important;
     border-radius: 0 !important;
-    padding: 3rem 2rem !important;
+    padding: 1.5rem 2rem 1rem !important;  /* v10: 减少上下 padding */
     margin: 0 auto !important;
     text-align: center !important;
     box-shadow: none !important;
@@ -282,11 +288,12 @@ header.header .header-nav,
     color: var(--primary) !important;
     opacity: 0.6;
     text-align: center;
-    padding: 2rem 0;
-    margin: 3rem auto 0;
-    max-width: 720px;
+    padding: 2rem 0 1.5rem !important;
+    margin: 0 auto !important;
+    max-width: calc(var(--main-width) + var(--gap) * 2);
     position: relative;
     z-index: 1;
+    min-height: 0 !important;
 }
 
 .footer a {
@@ -456,4 +463,15 @@ body::before {
 header, main, footer, nav {
     position: relative;
     z-index: 1;
+}
+
+/* === v10 新增：让 footer 紧贴内容，不被空视口拉伸 === */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main.main {
+    flex: 0 0 auto;
 }
