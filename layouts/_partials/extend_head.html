@@ -12,9 +12,12 @@
 {{- /* Custom ahmadx.dev style override */ -}}
 <link rel="stylesheet" href="{{ "/css/custom.css" | absURL }}">
 
-{{- /* v30: Mobile menu hamburger button + drawer (injected via JS) */ -}}
+{{- /* v30: Mobile menu hamburger button + drawer (injected via JS) - MOBILE ONLY */ -}}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // Only run on mobile (≤768px) - desktop uses normal menu
+    if (window.innerWidth > 768) return;
+
     // Find header nav
     const header = document.querySelector('header.header');
     if (!header) return;
@@ -34,19 +37,22 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     });
 
-    // Create hamburger button
+    // Add toggle DIRECTLY to headerNav (not logo-switches which is inside logo div)
+    // Insert before the menu ul so it has proper positioning
     const toggle = document.createElement('button');
     toggle.className = 'mobile-menu-toggle';
     toggle.setAttribute('aria-label', 'Open menu');
     toggle.innerHTML = '<svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
 
-    // Add toggle to logo-switches (right side of header)
-    const logoSwitches = headerNav.querySelector('.logo-switches');
-    if (logoSwitches) {
-        logoSwitches.appendChild(toggle);
-    } else {
-        headerNav.appendChild(toggle);
-    }
+    // Wrap in a container that goes to the right end
+    const toggleWrapper = document.createElement('div');
+    toggleWrapper.className = 'mobile-menu-toggle-wrapper';
+    toggleWrapper.appendChild(toggle);
+
+    // Append to headerNav - put at END (last child → rightmost with space-between)
+    headerNav.appendChild(toggleWrapper);
+    // Hide desktop menu on mobile (we replace with hamburger)
+    if (menuUl) menuUl.style.display = 'none';
 
     // Create drawer
     const drawer = document.createElement('div');
