@@ -1,0 +1,13 @@
+{{/*
+  Extend head for zouyihong.com ahmadx.dev style.
+  This file overrides themes/PaperMod/layouts/_partials/extend_head.html
+  via Hugo's theme lookup (user layouts/ takes precedence over theme/).
+*/}}
+
+{{- /* Google Fonts: Work Sans + JetBrains Mono */ -}}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+{{- /* Custom ahmadx.dev style override */ -}}
+<link rel="stylesheet" href="{{ "/css/custom.css" | absURL }}">

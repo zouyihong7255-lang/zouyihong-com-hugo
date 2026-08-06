@@ -1,0 +1,320 @@
+/* ============================================
+   zouyihong.com - ahmadx.dev 风格定制
+   基于 PaperMod + 自定义 CSS 覆盖
+   ============================================ */
+
+:root {
+    /* 字体：Work Sans + JetBrains Mono */
+    --work-sans: 'Work Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --jetbrains-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    --font-family: var(--work-sans);
+    --code-font-family: var(--jetbrains-mono);
+    
+    /* 主题色 - 暖色调（仿 ahmadx.dev 浅色） */
+    --theme: #f6f2e8;          /* 背景米色 */
+    --entry: #fffcf5;          /* 卡片背景 */
+    --primary: #2d2a24;        /* 主文字 */
+    --secondary: #ede8da;      /* 次背景 */
+    --tertiary: #ede8da;       /* 第三背景 */
+    --content: #2d2a24;        /* 内容文字 */
+    --border: #ddd7c8;         /* 边框 */
+    --muted: #ede8da;          /* 弱化 */
+    --accent: #c2590a;         /* 强调色（暖橙） */
+    --code-block-bg: #ede8da;
+    --code-bg: #f6f2e8;
+    --highlight: #d4a017;      /* 高亮色 */
+    
+    /* 圆角 - 统一柔和 */
+    --radius: 0.625rem;
+    --border-radius: 0.625rem;
+}
+
+/* 暗色模式 - 仿 ahmadx.dev 暗色 */
+[data-theme="dark"] {
+    --theme: #0a0a0a;          /* 背景黑 */
+    --entry: #171717;          /* 卡片深灰 */
+    --primary: #fafafa;        /* 主文字白 */
+    --secondary: #27272a;      /* 次背景 */
+    --tertiary: #18181b;       /* 第三背景 */
+    --content: #fafafa;        /* 内容白 */
+    --border: #27272a;         /* 边框灰 */
+    --muted: #18181b;          /* 弱化 */
+    --accent: #1d4ed8;         /* 强调色（蓝） */
+    --code-block-bg: #18181b;
+    --code-bg: #0a0a0a;
+    --highlight: #8b5cf6;      /* 高亮紫 */
+}
+
+/* 全局字体 */
+body {
+    font-family: var(--work-sans) !important;
+    font-size: 18px;
+    line-height: 1.6;
+    background: var(--theme) !important;
+    color: var(--primary) !important;
+    word-break: break-word;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    color: var(--primary) !important;
+    font-family: var(--work-sans) !important;
+    font-weight: 700;
+}
+
+/* Hero / homeInfoParams - 大标题居中柔和 */
+.first-entry, .home-info {
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2.5rem 2rem;
+    margin: 2rem 0;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    transition: all 0.2s ease;
+}
+
+.first-entry:hover, .home-info:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.home-info h1, .first-entry h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.home-info .home-info-content, .first-entry p {
+    color: var(--content);
+    opacity: 0.85;
+    max-width: 600px;
+    margin: 1rem auto;
+    line-height: 1.7;
+}
+
+/* Post entries (文章列表) - 卡片化 */
+.post-entry {
+    background: var(--entry) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius) !important;
+    padding: 1.5rem !important;
+    margin: 1rem 0 !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.post-entry:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+    border-color: var(--accent) !important;
+}
+
+.post-entry .entry-header h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* 导航栏 - 仿 ahmadx.dev 9 项菜单 */
+.nav {
+    background: var(--entry);
+    border-bottom: 1px solid var(--border);
+    border-radius: 0 0 var(--radius) var(--radius);
+    padding: 0.75rem 1.5rem;
+    backdrop-filter: blur(8px);
+}
+
+.nav a {
+    color: var(--primary) !important;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.4rem;
+    transition: all 0.15s ease;
+}
+
+.nav a:hover {
+    background: var(--secondary);
+    color: var(--accent) !important;
+}
+
+/* Footer - 简洁 */
+.footer {
+    background: var(--entry);
+    border-top: 1px solid var(--border);
+    border-radius: var(--radius) var(--radius) 0 0;
+    color: var(--primary) !important;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 3rem;
+}
+
+/* 单篇文章/页面 - 卡片化 */
+.post-content, .page-content {
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+/* 代码块 - 暗色 */
+code, pre {
+    font-family: var(--jetbrains-mono) !important;
+    background: var(--code-bg) !important;
+    color: var(--primary) !important;
+    border-radius: 0.4rem !important;
+    border: 1px solid var(--border) !important;
+}
+
+pre code {
+    background: transparent !important;
+    border: 0 !important;
+    padding: 0 !important;
+}
+
+/* 链接 - 强调色 */
+a {
+    color: var(--accent) !important;
+    text-decoration: none !important;
+    transition: all 0.15s ease;
+}
+
+a:hover {
+    color: var(--primary) !important;
+    border-bottom: 1px solid var(--accent);
+}
+
+/* 表格 - 卡片风格 */
+table {
+    border-collapse: collapse;
+    background: var(--entry);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    width: 100%;
+    margin: 1rem 0;
+}
+
+th, td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+th {
+    background: var(--secondary);
+    font-weight: 600;
+    color: var(--primary);
+}
+
+tr:last-child td {
+    border-bottom: 0;
+}
+
+/* 引用 - 强调左边框 */
+blockquote {
+    border-left: 4px solid var(--accent) !important;
+    background: var(--secondary) !important;
+    border-radius: 0 var(--radius) var(--radius) 0 !important;
+    padding: 1rem 1.5rem !important;
+    margin: 1.5rem 0 !important;
+    color: var(--primary) !important;
+    font-style: italic;
+}
+
+/* 主题切换按钮 - 圆形柔和 */
+#theme-toggle {
+    background: var(--secondary) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 50% !important;
+    color: var(--primary) !important;
+    width: 44px !important;
+    height: 44px !important;
+    transition: all 0.2s ease;
+}
+
+#theme-toggle:hover {
+    background: var(--accent) !important;
+    color: var(--theme) !important;
+    transform: scale(1.1);
+}
+
+/* 社交图标 - 圆角卡片 */
+.social-icons a {
+    background: var(--secondary);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0.25rem;
+    transition: all 0.2s ease;
+}
+
+.social-icons a:hover {
+    background: var(--accent);
+    color: var(--theme) !important;
+    transform: translateY(-2px);
+}
+
+/* 滚动条 - 柔色 */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--theme);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 0.4rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* 选中文本 - 强调色 */
+::selection {
+    background: var(--accent);
+    color: var(--theme);
+}
+
+/* 平滑过渡 */
+*, *::before, *::after {
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* 响应式 - 移动设备 */
+@media (max-width: 768px) {
+    .home-info, .first-entry {
+        padding: 1.5rem 1rem;
+    }
+    
+    .post-content, .page-content {
+        padding: 1.5rem;
+    }
+    
+    .nav {
+        padding: 0.5rem 1rem;
+    }
+}
+
+/* 加载动画 - 淡入 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.post-entry, .home-info, .first-entry, .page-content, .post-content {
+    animation: fadeIn 0.4s ease-out;
+}
