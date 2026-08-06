@@ -224,9 +224,9 @@ main .post-content:has(.avatar-container) {
 
 /* v12: 主页 main 内部 flexbox 居中 - 解决下方空 */
 body.list > .main {
-    display: block !important;
+    display: flex !important;
     flex-direction: column;
-    justify-content: flex-start !important;
+    justify-content: center !important;
     align-items: center !important;
     flex: 1 0 auto;
 }
