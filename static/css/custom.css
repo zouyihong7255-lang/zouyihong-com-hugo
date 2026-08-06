@@ -235,7 +235,7 @@ body.list > .main {
 }
 
 .home-info h1, .first-entry h2 {
-    font-size: clamp(1.5rem, 2.2vw, 2rem) !important;
+    font-size: clamp(1.75rem, 2.8vw, 2.5rem) !important;
     font-weight: 700;
     margin: 0.5rem 0 !important;
     color: var(--primary) !important;
