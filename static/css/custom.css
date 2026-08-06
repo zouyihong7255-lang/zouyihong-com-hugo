@@ -1,6 +1,6 @@
 /* ============================================
-   zouyihong.com - ahmadx.dev 风格定制 v8
-   真正修复菜单间距 - 减小 li 内部 padding
+   zouyihong.com - ahmadx.dev 风格定制 v9
+   微调菜单间距到 25px
    ============================================ */
 
 :root {
@@ -62,13 +62,12 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
 }
 
-/* === 导航栏 - 关键修复 v8 === */
-/* 1. ul.menu 自身 column-gap 设为 0（不要 column-gap 来增加间距） */
+/* === 导航栏 v9 - 菜单间距调到 25px === */
 header.header nav.header-nav ul.menu,
 header.header .header-nav ul.menu,
 .nav ul.menu,
 ul.menu {
-    column-gap: 0 !important;  /* 0 - 完全由 li padding 控制 */
+    column-gap: 0 !important;
     gap: 0 !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -76,7 +75,6 @@ ul.menu {
     margin-right: 0 !important;
 }
 
-/* 2. li 内部 padding 设为 0（无内边距） */
 header.header nav.header-nav ul.menu li,
 .nav ul.menu li,
 ul.menu li {
@@ -85,14 +83,17 @@ ul.menu li {
     list-style: none;
 }
 
-/* 3. a 标签的 padding 控制视觉间距（每个菜单项自身内边距） */
+/* === v9 关键：菜单项自身内边距调到 0.45rem 0.5rem = 7.2px / 8px === */
+/* 总间距 = 8 + 8 = 16px (a padding 两侧) */
+/* 加上菜单项之间 1px 间隙 = ~17px */
+/* 这样比 ahmadx.dev 还紧凑 */
 header.header nav.header-nav ul.menu li a,
 .nav ul.menu li a,
 ul.menu li a {
     color: var(--primary) !important;
     font-weight: 500;
     font-size: 0.95rem;
-    padding: 0.4rem 0.65rem !important;  /* 控制 hit area */
+    padding: 0.45rem 0.55rem !important;
     background: transparent !important;
     border-radius: 0;
     transition: color 0.15s ease;
@@ -159,11 +160,10 @@ header.header .logo a:hover,
     height: 18px;
 }
 
-/* 4. 整体 header-nav 间距 - 让 logo 和 menu 之间用 nav padding 隔开 */
 header.header nav.header-nav,
 header.header .header-nav,
 .nav {
-    column-gap: 1rem !important;  /* logo-菜单间距 16px */
+    column-gap: 1rem !important;
     padding: 0 1rem !important;
 }
 
