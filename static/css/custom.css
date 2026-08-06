@@ -67,7 +67,7 @@ body {
 body > .main,
 main.main {
     flex: 1 0 auto;
-    min-height: 0 !important;
+    min-height: calc(100vh - var(--header-height) - var(--footer-height)) !important;
     position: relative;
     padding: 0 var(--gap);
     max-width: calc(var(--main-width) + var(--gap) * 2);
@@ -229,6 +229,8 @@ body.list > .main {
     justify-content: center !important;
     align-items: center !important;
     flex: 1 0 auto;
+    min-height: calc(100vh - var(--header-height) - var(--footer-height)) !important;
+    margin: 0 !important;
 }
 
 /* === v13: 圆形头像 - 居中 H1 上方 === */
