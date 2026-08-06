@@ -12,7 +12,7 @@ type: page
 
 | 项目 | 详情 |
 | --- | --- |
-| 姓名 | 邹宜洪 (Zou Yihong) |
+| 姓名 | 邹宜洪 (Zou Yihong/Ryan Zou) |
 | 公司 | 爱理他（成都）科技有限公司 |
 | 业务 | 跨境 B2B 外贸 / 汽车改装件 |
 | 主营平台 | 阿里国际站 / [ailita4x4.com](https://ailita4x4.com) |
