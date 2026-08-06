@@ -222,14 +222,11 @@ main .post-content:has(.avatar-container) {
     margin-bottom: 0.25rem !important;
 }
 
-/* v12: 主页 main 内部 flexbox 居中 - 解决下方空 */
+/* v23: 暴力简单居中 - padding-top 25vh 把内容推到视口中央 */
 body.list > .main {
-    display: flex !important;
-    flex-direction: column;
-    justify-content: center !important;
-    align-items: center !important;
-    flex: 1 0 auto;
-    min-height: calc(100vh - var(--header-height) - var(--footer-height)) !important;
+    display: block !important;
+    min-height: 100vh !important;
+    padding: 22vh var(--gap) 0 !important;
     margin: 0 !important;
 }
 
