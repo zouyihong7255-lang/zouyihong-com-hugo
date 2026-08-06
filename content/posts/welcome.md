@@ -3,6 +3,7 @@ title: 欢迎来到 zouyihong.com
 slug: welcome
 date: 2026-08-03
 draft: false
+hiddenInHomeList: true
 tags:
   - 个人主页
   - Hugo
