@@ -1,6 +1,6 @@
 /* ============================================
-   zouyihong.com - ahmadx.dev 风格定制 v7
-   缩小菜单间距
+   zouyihong.com - ahmadx.dev 风格定制 v8
+   真正修复菜单间距 - 减小 li 内部 padding
    ============================================ */
 
 :root {
@@ -62,35 +62,42 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
 }
 
-/* === 导航栏 - 缩小间距 === */
-/* PaperMod 用 --gap 24px，我们单独给菜单用 4px（更紧凑） */
+/* === 导航栏 - 关键修复 v8 === */
+/* 1. ul.menu 自身 column-gap 设为 0（不要 column-gap 来增加间距） */
 header.header nav.header-nav ul.menu,
 header.header .header-nav ul.menu,
 .nav ul.menu,
 ul.menu {
-    column-gap: 0.25rem !important;  /* 4px - 紧凑 */
-    gap: 0.25rem !important;
+    column-gap: 0 !important;  /* 0 - 完全由 li padding 控制 */
+    gap: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 
-/* logo 和 menu 之间的间距也缩小 */
-header.header nav.header-nav,
-header.header .header-nav,
-.nav {
-    column-gap: 0.5rem !important;  /* 8px */
+/* 2. li 内部 padding 设为 0（无内边距） */
+header.header nav.header-nav ul.menu li,
+.nav ul.menu li,
+ul.menu li {
+    padding: 0 !important;
+    margin: 0 !important;
+    list-style: none;
 }
 
-/* === 导航栏 - 全部白色 + hover 全部变蓝 === */
+/* 3. a 标签的 padding 控制视觉间距（每个菜单项自身内边距） */
 header.header nav.header-nav ul.menu li a,
 .nav ul.menu li a,
 ul.menu li a {
     color: var(--primary) !important;
     font-weight: 500;
     font-size: 0.95rem;
-    padding: 0.4rem 0.6rem;
+    padding: 0.4rem 0.65rem !important;  /* 控制 hit area */
     background: transparent !important;
     border-radius: 0;
     transition: color 0.15s ease;
     text-decoration: none !important;
+    display: inline-block !important;
 }
 
 header.header nav.header-nav ul.menu li a:hover,
@@ -125,6 +132,7 @@ header.header .logo a,
     letter-spacing: -0.02em;
     background: transparent !important;
     transition: color 0.15s ease;
+    padding: 0 !important;
 }
 
 header.header .logo a:hover,
@@ -137,7 +145,7 @@ header.header .logo a:hover,
     color: var(--primary) !important;
     background: transparent !important;
     border: 0 !important;
-    padding: 0.4rem;
+    padding: 0.4rem !important;
     transition: color 0.15s ease;
 }
 
@@ -149,6 +157,14 @@ header.header .logo a:hover,
 .theme-toggle svg {
     width: 18px;
     height: 18px;
+}
+
+/* 4. 整体 header-nav 间距 - 让 logo 和 menu 之间用 nav padding 隔开 */
+header.header nav.header-nav,
+header.header .header-nav,
+.nav {
+    column-gap: 1rem !important;  /* logo-菜单间距 16px */
+    padding: 0 1rem !important;
 }
 
 /* === Hero / homeInfoParams - 居中无框 === */
@@ -411,10 +427,6 @@ pre code {
     }
     .post-entry {
         padding: 1rem 0 !important;
-    }
-    /* 移动端菜单间距更小 */
-    header.header nav.header-nav ul.menu {
-        column-gap: 0.15rem !important;
     }
 }
 
