@@ -1,6 +1,6 @@
 /* ============================================
-   zouyihong.com - ahmadx.dev 风格定制 v4
-   修复 logo + active hover 也变蓝
+   zouyihong.com - ahmadx.dev 风格定制 v5
+   修复白天模式点阵 + 完善所有细节
    ============================================ */
 
 :root {
@@ -24,6 +24,9 @@
     
     --radius: 0.5rem;
     --border-radius: 0.5rem;
+    
+    /* 点阵颜色 - 浅色模式用深灰点（清晰可见） */
+    --dot-color: #d4d4d8;
 }
 
 [data-theme="dark"] {
@@ -39,6 +42,9 @@
     --code-block-bg: #18181b;
     --code-bg: #18181b;
     --highlight: #3b82f6;
+    
+    /* 点阵颜色 - 暗色模式用浅灰点（清晰可见） */
+    --dot-color: #27272a;
 }
 
 body {
@@ -57,7 +63,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* === 导航栏 - 全部白色 + hover 全部变蓝 === */
-/* nav 链接 */
 header.header nav.header-nav ul.menu li a,
 .nav ul.menu li a,
 ul.menu li a {
@@ -79,7 +84,6 @@ ul.menu li a:hover {
     text-decoration: none !important;
 }
 
-/* active 链接 - 文字本身白（与未激活一致） */
 header.header nav.header-nav ul.menu li a span.active,
 .nav ul.menu li a .active,
 ul.menu li a .active {
@@ -88,14 +92,12 @@ ul.menu li a .active {
     font-weight: 500;
 }
 
-/* 关键修复 1: active 链接 hover 也要变蓝 */
 header.header nav.header-nav ul.menu li a:hover span.active,
 .nav ul.menu li a:hover .active,
 ul.menu li a:hover .active {
     color: var(--accent) !important;
 }
 
-/* 关键修复 2: logo hover 也要变蓝 */
 header.header .logo a,
 .logo a,
 .logo-switches button {
@@ -114,7 +116,6 @@ header.header .logo a:hover,
     background: transparent !important;
 }
 
-/* 主题切换按钮 */
 .theme-toggle {
     color: var(--primary) !important;
     background: transparent !important;
@@ -397,7 +398,8 @@ pre code {
     animation: none !important;
 }
 
-/* === 点阵背景纹理 === */
+/* === 点阵背景纹理 - 关键修复 === */
+/* 浅色模式用 #d4d4d8（深灰点），暗色模式用 #27272a（浅灰点） */
 body::before {
     content: '';
     position: fixed;
@@ -405,9 +407,9 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: radial-gradient(circle, var(--secondary) 1px, transparent 1px);
+    background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px);
     background-size: 24px 24px;
-    opacity: 0.3;
+    opacity: 0.5;
     pointer-events: none;
     z-index: -1;
 }
