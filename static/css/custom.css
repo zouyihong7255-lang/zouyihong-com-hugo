@@ -235,14 +235,14 @@ body.list > .main {
 }
 
 .home-info h1, .first-entry h2 {
-    font-size: clamp(2.5rem, 6vw, 4rem) !important;
+    font-size: clamp(1.75rem, 3vw, 2.5rem) !important;
     font-weight: 700;
-    margin: 0 0 0.5rem 0;
+    margin: 0.5rem 0 !important;
     color: var(--primary) !important;
     background: none !important;
     -webkit-text-fill-color: var(--primary) !important;
     letter-spacing: -0.03em;
-    line-height: 1.1;
+    line-height: 1.2;
 }
 
 .home-info .home-info-content, .first-entry p {
