@@ -229,11 +229,18 @@ main .post-content:has(.avatar-container) {
         font-size: 15px !important;
     }
 
+    /* 全局文字换行 - 解决长 token 撑出 */
+    body, p, h1, h2, h3, h4, a, span, div {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
     /* 主内容 padding 调整 - 不再垂直居中（让用户滚动浏览）*/
     body.list > .main {
         min-height: calc(100vh - 50px - 50px) !important;
-        padding: 6vh 1rem 1rem !important;
+        padding: 4vh 1rem 1rem !important;
         max-width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     /* header 高度降低 */
@@ -241,19 +248,27 @@ main .post-content:has(.avatar-container) {
         height: 50px !important;
     }
     header.header nav.header-nav {
-        padding: 0 1rem !important;
+        padding: 0 0.75rem !important;
+        gap: 0.5rem !important;
     }
 
-    /* logo 缩短 - 只显示 "邹" 或 "Zou" */
-    .logo a {
-        font-size: 0.95rem !important;
-        max-width: 120px;
+    /* logo 缩短 - 只显示 "邹宜洪"（去掉 | Zou Yihong 副标题） */
+    .logo {
+        max-width: 110px !important;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
     }
+    .logo a {
+        font-size: 0.95rem !important;
+        max-width: 110px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: block;
+    }
     .logo-switches {
-        gap: 0.5rem !important;
+        gap: 0.25rem !important;
     }
 
     /* 汉堡菜单按钮 - 移动端显示 */
