@@ -222,7 +222,7 @@ main .post-content:has(.avatar-container) {
     margin-bottom: 0.25rem !important;
 }
 
-/* v27: 修复 main 高度 - 减 header/footer 高度避免滚动条 */
+/* v28-final: 保持 18vh 几何居中 offset +9 - 验证完美 */
 body.list > .main {
     display: flex !important;
     flex-direction: column !important;
