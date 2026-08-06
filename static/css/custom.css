@@ -210,7 +210,7 @@ body.list > .main {
 .avatar-container {
     display: block !important;
     text-align: center !important;
-    margin: 0 auto 1.5rem !important;
+    margin: 0 auto 0.25rem !important;
     padding: 0 !important;
     width: auto !important;
     max-width: 100% !important;
