@@ -297,11 +297,17 @@ main .post-content:has(.avatar-container) {
         flex-shrink: 0;
     }
 
-    /* 汉堡菜单按钮 - 移动端显示在顶部右边 */
+    /* 汉堡菜单按钮 - 移动端固定在顶部右边 */
     .mobile-menu-toggle-wrapper {
         display: flex !important;
         align-items: center;
-        margin-left: auto !important;  /* 关键：推到右边 */
+        justify-content: center;
+        position: fixed !important;
+        top: 0 !important;
+        right: 0 !important;
+        z-index: 1000 !important;
+        width: 48px !important;
+        height: 48px !important;
     }
     .mobile-menu-toggle {
         display: flex !important;
