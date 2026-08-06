@@ -206,6 +206,34 @@ body.list > .main {
     flex: 1 0 auto;
 }
 
+/* === v13: 圆形头像 - 居中 H1 上方 === */
+.avatar-container {
+    display: block !important;
+    text-align: center !important;
+    margin: 0 auto 1.5rem !important;
+    padding: 0 !important;
+    width: auto !important;
+    max-width: 100% !important;
+}
+
+.site-avatar {
+    width: 140px !important;
+    height: 140px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: 0 0 0 1px var(--secondary) !important;
+}
+
+.first-entry .avatar-container {
+    margin-top: 0 !important;
+}
+
 .home-info h1, .first-entry h2 {
     font-size: clamp(2.5rem, 6vw, 4rem) !important;
     font-weight: 700;
