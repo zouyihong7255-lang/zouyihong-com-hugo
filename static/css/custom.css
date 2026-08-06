@@ -1,25 +1,25 @@
 /* ============================================
-   zouyihong.com - ahmadx.dev 风格定制 v2
-   极简 + 居中 + 无大框
+   zouyihong.com - ahmadx.dev 风格定制 v3
+   修复 nav 蓝色 + 完全极简
    ============================================ */
 
 :root {
-    /* 字体：Work Sans + JetBrains Mono */
+    /* 字体 */
     --work-sans: 'Work Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --jetbrains-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     --font-family: var(--work-sans);
     --code-font-family: var(--jetbrains-mono);
     
     /* 主题色 - 极简 */
-    --theme: #ffffff;          /* 背景纯白 */
-    --entry: #ffffff;          /* 卡片背景也纯白（去掉大框） */
+    --theme: #ffffff;
+    --entry: #ffffff;
     --primary: #0a0a0a;        /* 主文字深黑 */
-    --secondary: #f5f5f5;      /* 次背景极浅灰 */
-    --tertiary: #f5f5f5;       /* 第三背景 */
-    --content: #0a0a0a;        /* 内容文字 */
-    --border: transparent;     /* 边框透明（去掉大框） */
+    --secondary: #f5f5f5;
+    --tertiary: #f5f5f5;
+    --content: #0a0a0a;
+    --border: transparent;
     --muted: #f5f5f5;
-    --accent: #1d4ed8;         /* 强调色蓝色（hover 也用） */
+    --accent: #1d4ed8;         /* 强调色蓝色 */
     --code-block-bg: #f5f5f5;
     --code-bg: #f5f5f5;
     --highlight: #1d4ed8;
@@ -32,7 +32,7 @@
 [data-theme="dark"] {
     --theme: #000000;
     --entry: #000000;
-    --primary: #fafafa;
+    --primary: #fafafa;        /* 暗色下主文字白色 */
     --secondary: #18181b;
     --tertiary: #18181b;
     --content: #fafafa;
@@ -44,7 +44,6 @@
     --highlight: #3b82f6;
 }
 
-/* 全局 */
 body {
     font-family: var(--work-sans) !important;
     font-size: 16px;
@@ -61,46 +60,70 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* === 导航栏 - 白色文字 + hover 变蓝 === */
-.nav {
-    background: transparent !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    padding: 1.25rem 2rem !important;
-    backdrop-filter: none !important;
-}
-
-.nav #menu a, .nav a {
-    color: var(--primary) !important;  /* 白色（暗色下）/ 深黑（浅色下） */
+/* 用 ul.menu + li > a 提高优先级 */
+header.header nav.header-nav ul.menu li a,
+.nav ul.menu li a,
+ul.menu li a {
+    color: var(--primary) !important;  /* 白色（暗色下）/ 黑色（浅色下） */
     font-weight: 500;
     font-size: 0.95rem;
     padding: 0.4rem 0.6rem;
-    border-radius: 0;
-    transition: color 0.15s ease !important;
-    text-transform: none;
-}
-
-.nav #menu a:hover, .nav a:hover {
     background: transparent !important;
-    color: var(--accent) !important;  /* hover 变蓝色 */
-    border-bottom: 0;
+    border-radius: 0;
+    transition: color 0.15s ease;
+    text-decoration: none !important;
 }
 
-/* === 品牌字 - 小写粗体白 === */
-.nav .logo a, .logo a {
+header.header nav.header-nav ul.menu li a:hover,
+.nav ul.menu li a:hover,
+ul.menu li a:hover {
+    color: var(--accent) !important;  /* hover 变蓝色 */
+    background: transparent !important;
+    text-decoration: none !important;
+}
+
+/* active 链接 - 跟普通一样白 */
+header.header nav.header-nav ul.menu li a span.active,
+.nav ul.menu li a .active,
+ul.menu li a .active {
+    color: var(--primary) !important;
+    text-decoration: none !important;
+    font-weight: 500;
+}
+
+/* === 品牌字 === */
+header.header .logo a,
+.logo a,
+.logo-switches button {
     color: var(--primary) !important;
     font-weight: 700 !important;
     font-size: 1.1rem;
-    text-transform: lowercase;  /* 小写 */
+    text-transform: lowercase;
     letter-spacing: -0.02em;
 }
 
-.nav .logo a:hover, .logo a:hover {
+/* 主题切换按钮 */
+.theme-toggle {
     color: var(--primary) !important;
+    background: transparent !important;
+    border: 0 !important;
+    padding: 0.4rem;
+    transition: color 0.15s ease;
+}
+
+.theme-toggle:hover {
+    color: var(--accent) !important;
+    background: transparent !important;
+}
+
+.theme-toggle svg {
+    width: 18px;
+    height: 18px;
 }
 
 /* === Hero / homeInfoParams - 居中无框 === */
 .first-entry, .home-info {
-    background: transparent !important;  /* 无背景框 */
+    background: transparent !important;
     border: 0 !important;
     border-radius: 0 !important;
     padding: 3rem 2rem !important;
@@ -110,15 +133,11 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 720px;
 }
 
-.first-entry:hover, .home-info:hover {
-    box-shadow: none !important;
-}
-
 .home-info h1, .first-entry h2 {
-    font-size: clamp(2.5rem, 6vw, 4rem) !important;  /* 大字号 */
+    font-size: clamp(2.5rem, 6vw, 4rem) !important;
     font-weight: 700;
     margin: 0 0 0.5rem 0;
-    color: var(--primary) !important;  /* 纯色，不渐变 */
+    color: var(--primary) !important;
     background: none !important;
     -webkit-text-fill-color: var(--primary) !important;
     letter-spacing: -0.03em;
@@ -127,7 +146,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .home-info .home-info-content, .first-entry p {
     color: var(--primary) !important;
-    opacity: 0.6;  /* 副标题灰 */
+    opacity: 0.6;
     font-size: 1rem;
     max-width: 600px;
     margin: 0.5rem auto !important;
@@ -137,12 +156,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .home-info .home-info-content a, .first-entry p a {
     color: var(--accent) !important;
+    text-decoration: none !important;
     border-bottom: 0;
 }
 
 .home-info .home-info-content a:hover, .first-entry p a:hover {
     color: var(--accent) !important;
-    border-bottom: 1px solid var(--accent);
+    opacity: 0.8;
+    border-bottom: 0;
 }
 
 /* === 文章列表 - 无框 === */
@@ -158,9 +179,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .post-entry:hover {
-    transform: none !important;
     box-shadow: none !important;
-    border-color: var(--accent) !important;
 }
 
 .post-entry:last-child {
@@ -187,8 +206,17 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 0.75rem;
 }
 
+.post-entry a {
+    color: var(--primary) !important;
+    text-decoration: none !important;
+}
+
+.post-entry a:hover {
+    color: var(--accent) !important;
+}
+
 /* === 单篇文章/页面 - 无大框 === */
-.post-content, .page-content {
+.post-content, .page-content, main .first-entry + article, main article.post-entry {
     background: transparent !important;
     border: 0 !important;
     border-radius: 0 !important;
@@ -207,10 +235,16 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0.6;
     text-align: center;
     padding: 2rem 0;
-    margin-top: 3rem;
+    margin: 3rem auto 0;
     max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
+}
+
+.footer a {
+    color: var(--primary) !important;
+}
+
+.footer a:hover {
+    color: var(--accent) !important;
 }
 
 /* === 社交图标 - 朴素 === */
@@ -219,6 +253,7 @@ h1, h2, h3, h4, h5, h6 {
     gap: 0.5rem;
     justify-content: center;
     margin: 1.5rem 0 !important;
+    padding: 0 !important;
 }
 
 .social-icons a {
@@ -231,12 +266,12 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--primary) !important;
     opacity: 0.7;
     transition: color 0.15s ease;
+    text-decoration: none !important;
 }
 
 .social-icons a:hover {
     background: transparent !important;
     color: var(--accent) !important;
-    transform: none !important;
     opacity: 1;
 }
 
@@ -245,17 +280,17 @@ h1, h2, h3, h4, h5, h6 {
     height: 20px;
 }
 
-/* === 链接 === */
-a {
+/* === 链接 - 用更高优先级覆盖 === */
+p a, li a, td a, .post-content a, .page-content a {
     color: var(--accent) !important;
     text-decoration: none !important;
-    transition: color 0.15s ease;
+    border-bottom: 0;
 }
 
-a:hover {
+p a:hover, li a:hover, td a:hover, .post-content a:hover, .page-content a:hover {
     color: var(--accent) !important;
-    border-bottom: 0;
     opacity: 0.8;
+    border-bottom: 0;
 }
 
 /* === 表格 - 无框 === */
@@ -280,7 +315,7 @@ th {
     font-weight: 600;
 }
 
-/* === 引用 - 无框左侧蓝 === */
+/* === 引用 === */
 blockquote {
     border-left: 2px solid var(--accent) !important;
     background: transparent !important;
@@ -290,29 +325,6 @@ blockquote {
     color: var(--primary) !important;
     opacity: 0.8;
     font-style: italic;
-}
-
-/* === 主题切换按钮 - 朴素圆形 === */
-#theme-toggle {
-    background: transparent !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    color: var(--primary) !important;
-    width: auto !important;
-    height: auto !important;
-    padding: 0.4rem;
-    transition: color 0.15s ease;
-}
-
-#theme-toggle:hover {
-    background: transparent !important;
-    color: var(--accent) !important;
-    transform: none !important;
-}
-
-#theme-toggle svg {
-    width: 20px;
-    height: 20px;
 }
 
 /* === 代码 === */
@@ -357,7 +369,7 @@ pre code {
 
 /* === 响应式 === */
 @media (max-width: 768px) {
-    .nav {
+    .nav, .header-nav {
         padding: 1rem !important;
     }
     .first-entry, .home-info, .post-content, .page-content {
@@ -375,10 +387,10 @@ pre code {
 
 /* 移除 fadeIn 动画 */
 .post-entry, .home-info, .first-entry, .page-content, .post-content {
-    animation: none;
+    animation: none !important;
 }
 
-/* === 点阵背景纹理（仿 ahmadx.dev 技术感） === */
+/* === 点阵背景纹理 === */
 body::before {
     content: '';
     position: fixed;
