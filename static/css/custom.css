@@ -195,6 +195,15 @@ header.header .header-nav,
     max-width: 720px;
     position: relative;
     z-index: 1;
+    min-height: 0 !important;
+    display: block !important;
+    justify-content: flex-start !important;
+    flex-direction: column !important;
+}
+
+.first-entry .entry-header {
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 /* v12: 主页 main 内部 flexbox 居中 - 解决下方空 */
