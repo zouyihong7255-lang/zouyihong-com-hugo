@@ -1,6 +1,6 @@
 /* ============================================
-   zouyihong.com - ahmadx.dev 风格定制 v6
-   修复夜晚模式点阵（z-index 问题）
+   zouyihong.com - ahmadx.dev 风格定制 v7
+   缩小菜单间距
    ============================================ */
 
 :root {
@@ -25,7 +25,6 @@
     --radius: 0.5rem;
     --border-radius: 0.5rem;
     
-    /* 点阵颜色 - 浅色模式用深灰点 */
     --dot-color: #d4d4d8;
 }
 
@@ -43,7 +42,6 @@
     --code-bg: #18181b;
     --highlight: #3b82f6;
     
-    /* 点阵颜色 - 暗色模式用浅灰点 */
     --dot-color: #3f3f46;
 }
 
@@ -53,7 +51,7 @@ body {
     line-height: 1.6;
     background: var(--theme) !important;
     color: var(--primary) !important;
-    position: relative;  /* 让 ::before 相对 body 定位 */
+    position: relative;
     min-height: 100vh;
 }
 
@@ -62,6 +60,23 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--work-sans) !important;
     font-weight: 700;
     line-height: 1.2;
+}
+
+/* === 导航栏 - 缩小间距 === */
+/* PaperMod 用 --gap 24px，我们单独给菜单用 4px（更紧凑） */
+header.header nav.header-nav ul.menu,
+header.header .header-nav ul.menu,
+.nav ul.menu,
+ul.menu {
+    column-gap: 0.25rem !important;  /* 4px - 紧凑 */
+    gap: 0.25rem !important;
+}
+
+/* logo 和 menu 之间的间距也缩小 */
+header.header nav.header-nav,
+header.header .header-nav,
+.nav {
+    column-gap: 0.5rem !important;  /* 8px */
 }
 
 /* === 导航栏 - 全部白色 + hover 全部变蓝 === */
@@ -146,7 +161,7 @@ header.header .logo a:hover,
     text-align: center !important;
     box-shadow: none !important;
     max-width: 720px;
-    position: relative;  /* 让 hero 在点阵之上 */
+    position: relative;
     z-index: 1;
 }
 
@@ -397,6 +412,10 @@ pre code {
     .post-entry {
         padding: 1rem 0 !important;
     }
+    /* 移动端菜单间距更小 */
+    header.header nav.header-nav ul.menu {
+        column-gap: 0.15rem !important;
+    }
 }
 
 /* === 简化动画 === */
@@ -408,9 +427,7 @@ pre code {
     animation: none !important;
 }
 
-/* === 点阵背景纹理 - 关键修复 v6 === */
-/* 关键：让 ::before 在 body 背景之上，但在内容之下 */
-/* 用 z-index: 0 + body 背景透明，让点阵与 body 背景融合 */
+/* === 点阵背景纹理 === */
 body::before {
     content: '';
     position: fixed;
@@ -421,10 +438,9 @@ body::before {
     background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1.5px);
     background-size: 24px 24px;
     pointer-events: none;
-    z-index: 0;  /* 改为 0，让内容在它之上 */
+    z-index: 0;
 }
 
-/* 让所有内容 z-index > 0 */
 header, main, footer, nav {
     position: relative;
     z-index: 1;
