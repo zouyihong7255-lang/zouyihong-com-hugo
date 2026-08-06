@@ -11,3 +11,120 @@
 
 {{- /* Custom ahmadx.dev style override */ -}}
 <link rel="stylesheet" href="{{ "/css/custom.css" | absURL }}">
+
+{{- /* v30: Mobile menu hamburger button + drawer (injected via JS) */ -}}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Find header nav
+    const header = document.querySelector('header.header');
+    if (!header) return;
+    const headerNav = header.querySelector('nav.header-nav');
+    if (!headerNav) return;
+
+    // Get menu items from existing ul.menu
+    const menuUl = header.querySelector('ul.menu');
+    if (!menuUl) return;
+    const menuItems = Array.from(menuUl.querySelectorAll('li a')).map(a => {
+        return {
+            href: a.getAttribute('href'),
+            title: a.getAttribute('title') || a.textContent.trim(),
+            text: a.textContent.trim().split(/\s{2,}/)[0],
+            isExternal: a.href.startsWith('http') && !a.href.includes('zouyihong.com'),
+            isActive: a.querySelector('span.active') !== null
+        };
+    });
+
+    // Create hamburger button
+    const toggle = document.createElement('button');
+    toggle.className = 'mobile-menu-toggle';
+    toggle.setAttribute('aria-label', 'Open menu');
+    toggle.innerHTML = '<svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+
+    // Add toggle to logo-switches (right side of header)
+    const logoSwitches = headerNav.querySelector('.logo-switches');
+    if (logoSwitches) {
+        logoSwitches.appendChild(toggle);
+    } else {
+        headerNav.appendChild(toggle);
+    }
+
+    // Create drawer
+    const drawer = document.createElement('div');
+    drawer.className = 'mobile-menu-drawer';
+    drawer.setAttribute('aria-hidden', 'true');
+
+    const drawerUl = document.createElement('ul');
+    menuItems.forEach(item => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = item.href;
+        a.title = item.title;
+        if (item.isActive) a.className = 'active';
+        if (item.isExternal) {
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+        }
+        a.textContent = item.text;
+        li.appendChild(a);
+        drawerUl.appendChild(li);
+    });
+    drawer.appendChild(drawerUl);
+    document.body.appendChild(drawer);
+
+    // Create backdrop
+    const backdrop = document.createElement('div');
+    backdrop.className = 'mobile-menu-backdrop';
+    document.body.appendChild(backdrop);
+
+    // Toggle behavior
+    function openDrawer() {
+        drawer.classList.add('open');
+        backdrop.classList.add('open');
+        drawer.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+        drawer.classList.remove('open');
+        backdrop.classList.remove('open');
+        drawer.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+    toggle.addEventListener('click', function() {
+        if (drawer.classList.contains('open')) {
+            closeDrawer();
+        } else {
+            openDrawer();
+        }
+    });
+    backdrop.addEventListener('click', closeDrawer);
+
+    // Close on link click
+    drawer.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', closeDrawer);
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && drawer.classList.contains('open')) {
+            closeDrawer();
+        }
+    });
+});
+</script>
+
+{{- /* v30: Backdrop CSS (also defined in custom.css but inline to ensure load) */ -}}
+<style>
+.mobile-menu-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+.mobile-menu-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+</style>
