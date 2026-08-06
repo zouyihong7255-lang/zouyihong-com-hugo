@@ -188,7 +188,7 @@ header.header .header-nav,
     background: transparent !important;
     border: 0 !important;
     border-radius: 0 !important;
-    padding: 1.5rem 2rem 1rem !important;
+    padding: 0.25rem 2rem 1rem !important;
     margin: 0 auto !important;
     text-align: center !important;
     box-shadow: none !important;
@@ -204,6 +204,22 @@ header.header .header-nav,
 .first-entry .entry-header {
     margin: 0 !important;
     padding: 0 !important;
+}
+
+/* v20: 紧贴 avatar 和 H1 */
+main .first-entry:first-of-type,
+.first-entry {
+    margin-top: 0 !important;
+}
+
+/* 缩小 post-content 内部 padding/margin - hero 区域专用 */
+main .post-content:has(.avatar-container) {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.avatar-container {
+    margin-bottom: 0.25rem !important;
 }
 
 /* v12: 主页 main 内部 flexbox 居中 - 解决下方空 */
