@@ -222,11 +222,11 @@ main .post-content:has(.avatar-container) {
     margin-bottom: 0.25rem !important;
 }
 
-/* v23: 暴力简单居中 - padding-top 25vh 把内容推到视口中央 */
+/* v24: 微调 22vh -> 18vh 让内容真正居中 */
 body.list > .main {
     display: block !important;
     min-height: 100vh !important;
-    padding: 22vh var(--gap) 0 !important;
+    padding: 18vh var(--gap) 0 !important;
     margin: 0 !important;
 }
 
