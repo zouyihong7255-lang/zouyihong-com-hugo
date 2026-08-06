@@ -222,12 +222,12 @@ main .post-content:has(.avatar-container) {
     margin-bottom: 0.25rem !important;
 }
 
-/* v26: 修复滚动条 - box-sizing border-box 让 padding 算在 100vh 内 */
+/* v27: 修复 main 高度 - 减 header/footer 高度避免滚动条 */
 body.list > .main {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    min-height: 100vh !important;
+    min-height: calc(100vh - 60px - 60px) !important;
     box-sizing: border-box !important;
     padding: 18vh var(--gap) 0 !important;
     margin: 0 auto !important;
