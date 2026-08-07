@@ -13,6 +13,9 @@ params:
     - name: facebook
       title: facebook
       url: https://www.facebook.com/profile.php?id=61567156603897
+    - name: favicon
+      title: favicon
+      url: https://xhslink.cn/m/6ulA7h9ndvI
   homeInfoParams:
     Title: 邹宜洪 · Ryan Zou
     Content: |-
@@ -63,17 +66,17 @@ menu:
       name: 邮箱
       url: https://mail.zouyihong.com/
       weight: 6
+defaultContentLanguage: zh-cn
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableEmoji: true
 outputs:
   home:
     - HTML
     - RSS
     - JSON
-enableEmoji: true
-buildExpired: false
-buildFuture: false
-buildDrafts: false
-enableRobotsTXT: true
-defaultContentLanguage: zh-cn
 baseURL: https://zouyihong.com/
 languageCode: zh-cn
 hasCJKLanguage: true
