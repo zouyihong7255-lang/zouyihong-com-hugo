@@ -1,0 +1,10 @@
+<input type="checkbox" id="hb-toggle-static" />
+<label for="hb-toggle-static" class="hb-static" aria-label="Toggle menu">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</label>
+<nav class="drawer-static" id="drawer-static">
+{{- range .Site.Menus.main }}
+<li><a href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a></li>
+{{- end }}
+</nav>
+<label for="hb-toggle-static" class="bd-static" id="bd-static"></label>

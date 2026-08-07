@@ -14,8 +14,8 @@ params:
       title: facebook
       url: https://www.facebook.com/profile.php?id=61567156603897
     - name: xiaohongshu
-      title: xiaohongshu
-      url: https://xhslink.cn/m/6ulA7h9ndvI
+      title: 小红书
+      url: 'https://xhslink.cn/m/6u1A7h9ndvI'
   homeInfoParams:
     Title: 邹宜洪 · Ryan Zou
     Content: |-
